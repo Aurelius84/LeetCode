@@ -16,6 +16,7 @@ Explanation: Maximum average is (12-5-6+50)/4 = 51/4 = 12.75
 2. Elements of the given array will be in the range [-10,000, 10,000].
 
 ```Java
+// author: Then
 public class solution{
   public double findMaxAverage(int[] nums, int k){
     double max = 0;
