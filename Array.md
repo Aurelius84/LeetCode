@@ -124,3 +124,26 @@ class Solution:
                 width += 1
         return cnt >= n
 ```
+
+```Java
+public class Solution {
+    //author : Then
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        int left=-2;
+        for (int i = 0; i < flowerbed.length; i++) {
+            if(flowerbed[i] == 1){
+                int emptyPlotNum = i-left-1;
+                if(emptyPlotNum>=3){
+                    n -= (emptyPlotNum-1)>>1;
+                }
+                left = i;
+            }
+        }
+        int emptyPlotNum = flowerbed.length-left;
+        if(emptyPlotNum>=3){
+            n -= (emptyPlotNum-1)>>1;
+        }
+        return n>0?false:true;
+    }
+}
+```
