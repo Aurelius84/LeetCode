@@ -204,3 +204,56 @@ class Solution {
     }
 }
 ```
+
+[41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/description/)
+
+Given an unsorted integer array, find the first missing positive integer.
+
+For example,
+Given [1,2,0] return 3,
+and [3,4,-1,1] return 2.
+
+**Example 1:**
+```
+Given [1,2,0] return 3,
+and [3,4,-1,1] return 2.
+```
+
+**Note:**
+
+Your algorithm should run in O(n) time and uses constant space.
+
+```Java
+class Solution {
+	// author: Then
+    //整体思路:第一个缺失的正整数范围只能在1-nums.length+1，
+    //因此只要标记1-nums.length这些数有没有出现过，就可以得到第一个miss的正整数
+    // 这里使用nums[i]=i+1来标记i+1这个数字已经出现过
+    public int firstMissingPositive(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            mark(nums,i);
+        }
+        //遍历数组找到第一个miss的正整数
+        for (int i = 0; i < nums.length; i++) {
+            if(nums[i]!=i+1){
+                return i+1;
+            }
+        }
+        //如果1-nums.length没有miss那肯定是nums.length+1这个数miss了
+        return nums.length+1;
+    }
+
+    private void mark(int []nums, int i){
+        //如果第i个元素不再范围内或者已经出现过，跳出递归
+        if(nums[i]<=0 || nums[i]>nums.length || nums[i] == i+1){
+            return;
+        }
+        int tmp = nums[i];
+        //已经处理过的元素赋值为0，避免无线循环递归
+        nums[i] = 0;
+        mark(nums,tmp-1);
+        //出现过的数字打上标记
+        nums[tmp-1] = tmp;
+    }
+}
+```
