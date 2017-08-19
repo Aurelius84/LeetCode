@@ -257,3 +257,24 @@ class Solution {
     }
 }
 ```
+
+```python
+def firstMissingPositive(self, nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    # idea: i should in nums[i]
+    N=len(nums)
+    nums=nums+[0]
+    # 循环结束后 nums[i]=i ,for all i,expect missing positive
+    for i in range(N+1): 
+        k = nums[i]
+        while 0<= k <= N and k != nums[k]:
+            nums[k],k=k,nums[k]
+    # 第一个不等于0的位置
+    for i in range(N+1):
+        if nums[i] != i:
+            return i
+    return N+1
+```
