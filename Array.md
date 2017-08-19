@@ -259,6 +259,7 @@ class Solution {
 ```
 
 ```python
+// author: SweatSword
 def firstMissingPositive(self, nums):
     """
     :type nums: List[int]
