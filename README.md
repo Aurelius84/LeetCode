@@ -19,3 +19,4 @@
 - [565. Array Nesting ](https://leetcode.com/problems/array-nesting/description/) (Medium)
 - [41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/description/) (Hard)
 - [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/) (Hard)
+- [661. Image Smoother](https://leetcode.com/problems/image-smoother/description/)(Easy)
