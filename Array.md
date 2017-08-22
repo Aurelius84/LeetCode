@@ -333,3 +333,115 @@ class Solution {
     }
 }
 ```
+
+```java
+class Solution {
+    // author: Then
+    //基本思路：遍历intervals，根据newInterval.start和end先后确定merge后的新区间
+    //遍历的同时进行插入，在确定newInterval.start和end的过程中包含的区间不用再插入
+    //如果newInterval.end在最后一个区间内，那么这个区间不用再插入，否则仍需要插入
+    public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
+        List<Interval> resultList = new LinkedList<>();
+        int size = intervals.size();
+        int i = 0;
+        //确认newInterval.start
+        for (; i < size ;i++) {
+            Interval interval = intervals.get(i);
+            if(interval.end >= newInterval.start){
+                if(interval.start <= newInterval.start){
+                    newInterval.start = interval.start;
+                }
+                break;
+            }
+            resultList.add(interval);
+        }
+
+        //确认newInterval.end
+        for (; i < size; i++) {
+            Interval interval = intervals.get(i);
+            if(interval.end >= newInterval.end){
+                if(interval.start <= newInterval.end){
+                    newInterval.end = interval.end;
+                    i++;
+                }
+                break;
+            }
+
+        }
+
+        //插入merge后的区间
+        resultList.add(newInterval);
+
+        //插入后续区间
+        for (; i < size; i++) {
+            resultList.add(intervals.get(i));
+        }
+        return resultList;
+    }
+}
+```
+
+[661. Image Smoother](https://leetcode.com/problems/image-smoother/description/)
+
+Given a 2D integer matrix M representing the gray scale of an image, you need to design a smoother to make the gray scale of each cell becomes the average gray scale (rounding down) of all the 8 surrounding cells and itself. If a cell has less than 8 surrounding cells, then use as many as you can.
+**Example 1:**
+```
+Input:
+[[1,1,1],
+ [1,0,1],
+ [1,1,1]]
+Output:
+[[0, 0, 0],
+ [0, 0, 0],
+ [0, 0, 0]]
+Explanation:
+For the point (0,0), (0,2), (2,0), (2,2): floor(3/4) = floor(0.75) = 0
+For the point (0,1), (1,0), (1,2), (2,1): floor(5/6) = floor(0.83333333) = 0
+For the point (1,1): floor(8/9) = floor(0.88888889) = 0
+```
+**Note:**
+- The value in the given matrix is in the range of [0, 255].
+- The length and width of the given matrix are in the range of [1, 150].
+
+```java
+class Solution {
+    // author: Then
+    public int[][] imageSmoother(int[][] M) {
+        int xsize = M.length;
+        int ysize = M[0].length;
+        int result[][] = new int[xsize][ysize];
+        for (int i = 0; i < xsize; i++) {
+            for (int j = 0; j < ysize; j++) {
+                int ii=i-1,jj=j-1,row=3,col=3;
+                if( i == 0 ){
+                    ii = i;
+                    row--;
+                }
+                if( i == xsize-1 ){
+                    row--;
+                }
+                if( j == 0){
+                    jj = j;
+                    col--;
+                }
+                if( j == ysize-1 ){
+                    col--;
+                }
+                result[i][j] = avgCells(M,ii,jj,row,col);
+            }
+        }
+        return result;
+    }
+
+    //计算下标为i，j的坐标为左上角cell开始，row行，col列cell组的平均值
+    private  int avgCells(int[][] M, int i, int j,int row,int col){
+        int tol = 0;
+        for (int k = 0; k < row; k++) {
+            for (int l = 0; l < col ; l++) {
+                tol += M[i+k][j+l];
+            }
+        }
+        return tol/(col*row);
+    }
+}
+```
