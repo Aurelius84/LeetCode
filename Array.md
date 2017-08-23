@@ -269,7 +269,7 @@ def firstMissingPositive(self, nums):
     N=len(nums)
     nums=nums+[0]
     # 循环结束后 nums[i]=i ,for all i,expect missing positive
-    for i in range(N+1): 
+    for i in range(N+1):
         k = nums[i]
         while 0<= k <= N and k != nums[k]:
             nums[k],k=k,nums[k]
@@ -316,7 +316,7 @@ class Solution {
         while ((count < intervals.size()) && (newInterval.start > intervals.get(count).end)) {
             result.add(intervals.get(count++));
         }
-        
+
         //merge区间
         while ((count < intervals.size()) && (newInterval.end >= intervals.get(count).start)) {
             newInterval.start = Math.min(newInterval.start, intervals.get(count).start);
@@ -324,7 +324,7 @@ class Solution {
             count ++;
         }
         result.add(newInterval);
-        
+
         //后续区间
         while (count < intervals.size()) {
             result.add(intervals.get(count++));
@@ -457,9 +457,9 @@ You may assume that Teemo attacks at the very beginning of a specific time point
 ```
 Input: [1,4], 2
 Output: 4
-Explanation: At time point 1, Teemo starts attacking Ashe and makes Ashe be poisoned immediately. 
-This poisoned status will last 2 seconds until the end of time point 2. 
-And at time point 4, Teemo attacks Ashe again, and causes Ashe to be in poisoned status for another 2 seconds. 
+Explanation: At time point 1, Teemo starts attacking Ashe and makes Ashe be poisoned immediately.
+This poisoned status will last 2 seconds until the end of time point 2.
+And at time point 4, Teemo attacks Ashe again, and causes Ashe to be in poisoned status for another 2 seconds.
 So you finally need to output 4.
 ```
 
@@ -467,10 +467,10 @@ So you finally need to output 4.
 ```
 Input: [1,2], 2
 Output: 3
-Explanation: At time point 1, Teemo starts attacking Ashe and makes Ashe be poisoned. 
-This poisoned status will last 2 seconds until the end of time point 2. 
-However, at the beginning of time point 2, Teemo attacks Ashe again who is already in poisoned status. 
-Since the poisoned status won't add up together, though the second poisoning attack will still work at time point 2, it will stop at the end of time point 3. 
+Explanation: At time point 1, Teemo starts attacking Ashe and makes Ashe be poisoned.
+This poisoned status will last 2 seconds until the end of time point 2.
+However, at the beginning of time point 2, Teemo attacks Ashe again who is already in poisoned status.
+Since the poisoned status won't add up together, though the second poisoning attack will still work at time point 2, it will stop at the end of time point 3.
 So you finally need to output 3.
 ```
 
@@ -490,6 +490,45 @@ class Solution {
             result += duration;
         }
         return result;
+    }
+}
+```
+
+[560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)
+
+Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to **k**.  
+
+**Example 1:**
+```
+Input: nums = [1,1,1], k = 2
+Output: 2
+```
+
+**Note:**
+- The length of the array is in range [1, 20,000].
+- The range of numbers in the array is [-1000, 1000] and the range of the integer k is [-1e7, 1e7].
+
+```Java
+public class Solution {
+  // author: KillersDeath
+    public int subarraySum(int[] nums, int k) {
+        int count = 0;
+        int sum = 0;
+        HashMap < Integer, Integer > sum_map = new HashMap < > ();
+        // 起始和为 0
+        sum_map.put(0, 1);
+
+        for (int i = 0; i < nums.length; i++) {
+            // 当前和
+            sum += nums[i];
+            if (sum_map.containsKey(sum - k)){
+                // 当前到i和为sum, 之前某个点j和为sum-k， 则[j, i]区间的和就为 k
+                count += sum_map.get(sum - k);
+            }
+            // 和为sum的k自动加1
+            sum_map.put(sum, sum_map.getOrDefault(sum, 0) + 1);
+        }
+        return count;
     }
 }
 ```
