@@ -18,10 +18,11 @@
 - [605. Can Place Flowers ](https://leetcode.com/problems/valid-triangle-number/description/) (Easy)
 - [565. Array Nesting ](https://leetcode.com/problems/array-nesting/description/) (Medium)
 - [41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/description/) (Hard)
+- [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/) (Hard)
 
 ## Second Week
-- [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/) (Hard)
 - [661. Image Smoother](https://leetcode.com/problems/image-smoother/description/)(Easy)
 - [495. Teemo Attacking](https://leetcode.com/problems/teemo-attacking/description/)(Medium)
 - [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)(Medium)
+- [268. Missing Number](https://leetcode.com/problems/missing-number/description/)(Easy)
 - [442. Find All Duplicates in an Array](https://leetcode.com/problems/find-all-duplicates-in-an-array/description/)(Medium)
