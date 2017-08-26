@@ -532,6 +532,29 @@ public class Solution {
     }
 }
 ```
+[268. Missing Number](https://leetcode.com/problems/missing-number/description/)(Easy)
+
+Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
+
+**For example,**
+Given nums = [0, 1, 3] return 2.
+
+**Note:**
+Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
+
+```
+class Solution {
+    public int missingNumber(int[] nums) {
+        int sum = 0;
+        int N = nums.length;
+        for (int i=0; i<nums.length; i++) {
+            sum += nums[i];
+        }
+        int res = (1+N) * N / 2;
+        return res - sum;
+    }
+}
+```
 
 [442. Find All Duplicates in an Array](https://leetcode.com/problems/find-all-duplicates-in-an-array/description/)
 Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
