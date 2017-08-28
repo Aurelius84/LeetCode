@@ -27,3 +27,7 @@
 - [268. Missing Number](https://leetcode.com/problems/missing-number/description/)(Easy)
 - [442. Find All Duplicates in an Array](https://leetcode.com/problems/find-all-duplicates-in-an-array/description/)(Medium)
 - [537. Complex Number Multiplication ](https://leetcode.com/problems/complex-number-multiplication/description/)(Medium)
+- [657. Judge Route Circle ](https://leetcode.com/problems/judge-route-circle/description/)
+
+## Third Week
+- [647. Palindromic Substrings ](https://leetcode.com/problems/palindromic-substrings/description/)
