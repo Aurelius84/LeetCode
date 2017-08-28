@@ -40,7 +40,7 @@ class Solution(object):
         return "{real}+{image}i".format(real=A*C-B*D,image=A*D+B*C)  
 ```
 
-[657. Judge Route Circle ](https://leetcode.com/problems/judge-route-circle/description/)
+[657. Judge Route Circle ](https://leetcode.com/problems/judge-route-circle/description/)(Easy)
 
 Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to **the original place.**
 
@@ -91,7 +91,7 @@ class Solution {
 }
 ```
 
-[647. Palindromic Substrings ](https://leetcode.com/problems/palindromic-substrings/description/)
+[647. Palindromic Substrings ](https://leetcode.com/problems/palindromic-substrings/description/)(Medium)
 
 Given a string, your task is to count how many palindromic substrings in this string.
 
@@ -116,5 +116,5 @@ Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
 ```
 
 ```java
-// author: 
+// author:
 ```
