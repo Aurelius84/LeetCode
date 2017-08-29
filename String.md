@@ -112,9 +112,41 @@ Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
 ```
 
 ```python
-# author:
+# author: KillersDeath
+class Solution:
+    def countSubstrings(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        N = len(s)
+        cnt = 0
+        for center in range(2*N - 1):
+            left = int(center / 2)
+            right = left + center % 2
+            while left >= 0 and right < N and s[left] == s[right]:
+                cnt += 1
+                left -= 1
+                right += 1
+        return cnt
 ```
 
 ```java
 // author:
+class Solution {
+    int cnt = 0;
+    public int countSubstrings(String s) {
+        if(s.length() == 0){ return cnt; }
+        for(int i=0; i < s.length(); i++){ // 以 i 作为中间字符
+            extentPalindromic(s, i, i); // 考虑单数的回文子串
+            extentPalindromic(s, i, i+1); // 考虑双数的回文子串
+        }
+        return cnt;
+    }
+    public void extentPalindromic(String s, int left, int right){
+        while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)){
+            cnt++; left--; right++; //移动游标
+        }
+    }
+}
 ```
