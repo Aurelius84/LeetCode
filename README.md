@@ -32,3 +32,5 @@
 ## Third Week
 - [647. Palindromic Substrings ](https://leetcode.com/problems/palindromic-substrings/description/)(Medium)
 - [632. Smallest Range ](https://leetcode.com/problems/smallest-range/description/)(Hard)
+- [632. Construct String from Binary Tree ](https://leetcode.com/problems/construct-string-from-binary-tree/description/)(Easy)
+- [551. Student Attendance Record I ](https://leetcode.com/problems/student-attendance-record-i/description/)(Easy)
