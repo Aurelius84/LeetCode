@@ -273,7 +273,7 @@ class Solution{
 }
 ```
 
-[651. Student Attendance Record I](https://leetcode.com/problems/student-attendance-record-i/description/)
+[551. Student Attendance Record I](https://leetcode.com/problems/student-attendance-record-i/description/)
 
 You are given a string representing an attendance record for a student. The record only contains the following three characters:
 
