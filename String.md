@@ -273,6 +273,42 @@ class Solution{
 }
 ```
 
+```python
+#author: sweatsword
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def tree2str(self, t):
+        """
+        :type t: TreeNode
+        :rtype: str
+        """ 
+        res=[]
+        self.pre_order(t,res)
+        if res:
+            return ''.join(res[1:-1])
+        else:
+            return ''
+    
+    def pre_order(self,T, res):
+        if T:
+            res.extend(['(', str(T.val)]) # 进入新树时(T.val
+            if T.left:
+                self.pre_order(T.left,res) 
+            elif T.right: # T只有右子树,加()
+                res.extend(['(',')'])
+            if T.right:
+                self.pre_order(T.right,res)
+            res.append(')') # 退出该数时加)
+
+```
+
 [551. Student Attendance Record I](https://leetcode.com/problems/student-attendance-record-i/description/)
 
 You are given a string representing an attendance record for a student. The record only contains the following three characters:
@@ -298,6 +334,32 @@ Output: False
 
 ```python
 # author:
+class Solution(object):
+    def checkRecord(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        L_nums = A_nums = 0
+        flag = False
+        for c in s:
+            if c == 'A':
+                A_nums += 1
+                if A_nums > 1:
+                    return False
+            if c == 'L': 
+                if not flag:# 进入连续区
+                    L_nums = 1
+                    flag = True
+                else:
+                    # 连续区
+                    L_nums += 1
+                    if L_nums > 2:
+                        return False
+            else: # 退出连续区
+                flag = False
+                L_nums = 0
+        return True
 ```
 
 ```java
@@ -320,4 +382,55 @@ class Solution {
     return true;
   }
 }
+```
+
+[583. Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings/description/)
+ Given two words word1 and word2, find the minimum number of steps required to make word1 and word2 the same, where in each step you can delete one character in either string.
+
+**Example 1:**
+
+    Input: "sea", "eat"
+    Output: 2
+    Explanation: You need one step to make "sea" to "ea" and another step to make "eat" to "ea".
+
+**Note:**
+
+    The length of given words won't exceed 500.
+    Characters in given words can only be lower-case letters.
+
+
+```python
+#author:sweatsword
+class Solution(object):
+    # d(i,j)= d(i+1,j+1) if A[i]=B[j]     d(app add)->d(pp dd)
+    # d(i,j) =min d(i+1,j),d(j+1,i) if A[i]!=B[j] d(sea,tea)->min d(ea,tea),d(sea,ea)
+    # d(i,j)=len(A)-j   if i=0    d('','sea')=3
+    # d(i,j)=len(B)-i if j=0   
+    def minDistance(self, word1, word2):
+        """
+        :type word1: str
+        :type word2: str
+        :rtype: int
+        """
+        self.word1=word1
+        self.word2=word2
+        self.d={}
+        return self.Dist(len(word1)-1, len(word2)-1)
+        
+    def Dist(self,i, j):
+        d=self.d
+        if (i,j) not in d:  
+            if i == -1:
+                d[(i, j)] = j+1
+                return d[(i, j)]
+            elif j == -1:
+                d[(i, j)] = i+1
+                return d[(i, j)]
+            elif self.word1[i] == self.word2[j]:
+                d[(i, j)] = self.Dist(i - 1, j - 1)
+                return d[(i, j)]
+            elif self.word1[i] != self.word2[j]:
+                d[(i, j)] = min(self.Dist(i - 1, j), self.Dist( i, j - 1)) + 1
+                return d[(i, j)]
+        return d[(i,j)]
 ```
