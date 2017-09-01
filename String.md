@@ -257,7 +257,20 @@ except we can't omit the first parenthesis pair to break the one-to-one mapping 
 ```
 
 ```java
-// author:
+// author: KillersDeath
+class Solution{
+  public String tree2str(TreeNode t){
+    if (t == null) return "";
+    String result = t.val + "";
+    if(t.right != null){
+      return result + "(" + tree2str(t.left) + ")(" + tree2str(t.right) + ")";
+    }else if (t.left != null){
+      return result + "(" + tree2str(t.left) + ")";
+    }else{
+      return result;
+    }
+  }
+}
 ```
 
 [651. Student Attendance Record I](https://leetcode.com/problems/student-attendance-record-i/description/)
@@ -288,5 +301,23 @@ Output: False
 ```
 
 ```java
-// author:
+// author: KillersDeath
+class Solution {
+  public boolean checkRecord(String s){
+    int A=0, L=0;
+    for(int i = 0; i < s.length(); i++){
+      if(s.charAt(i) == 'L'){
+        L ++;
+        if (L > 2) return false;
+      }else{
+        L = 0;
+        if(s.charAt(i) == 'A'){
+          A ++;
+          if(A > 1) return false;
+        }
+      }
+    }
+    return true;
+  }
+}
 ```
