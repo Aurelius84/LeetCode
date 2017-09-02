@@ -288,19 +288,19 @@ class Solution(object):
         """
         :type t: TreeNode
         :rtype: str
-        """ 
+        """
         res=[]
         self.pre_order(t,res)
         if res:
             return ''.join(res[1:-1])
         else:
             return ''
-    
+
     def pre_order(self,T, res):
         if T:
             res.extend(['(', str(T.val)]) # 进入新树时(T.val
             if T.left:
-                self.pre_order(T.left,res) 
+                self.pre_order(T.left,res)
             elif T.right: # T只有右子树,加()
                 res.extend(['(',')'])
             if T.right:
@@ -347,7 +347,7 @@ class Solution(object):
                 A_nums += 1
                 if A_nums > 1:
                     return False
-            if c == 'L': 
+            if c == 'L':
                 if not flag:# 进入连续区
                     L_nums = 1
                     flag = True
@@ -416,7 +416,7 @@ class Solution(object):
         self.word2=word2
         self.d={}
         return self.Dist(len(word1)-1, len(word2)-1)
-        
+
     def Dist(self,i, j):
         d=self.d
         if (i,j) not in d:  
@@ -433,4 +433,22 @@ class Solution(object):
                 d[(i, j)] = min(self.Dist(i - 1, j), self.Dist( i, j - 1)) + 1
                 return d[(i, j)]
         return d[(i,j)]
+```
+
+```java
+//author: KillersDeath
+class Solution {
+  public int minDistance(String word1, String word2){
+    int len1 = word1.length(), len2 = word2.length();
+    //保留最长公共子串长度
+    int dp[][] = new int[len1+1][len2+1]
+
+    for(int i=0; i<=len1; i++){
+      for(int j=0; j<=len2; j++){
+        dp[i][j] = word1.charAt(i-1) == word2.charAt(j-1) ? dp[i-1][j-1]+1 : Math.max(dp[i-1][j], dp[i][j-1]);
+      }
+    }
+    return len1 + len2 - 2 * dp[len1][len2];
+  }
+}
 ```
