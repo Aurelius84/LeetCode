@@ -34,5 +34,4 @@
 - [632. Smallest Range ](https://leetcode.com/problems/smallest-range/description/)(Hard)
 - [632. Construct String from Binary Tree ](https://leetcode.com/problems/construct-string-from-binary-tree/description/)(Easy)
 - [551. Student Attendance Record I ](https://leetcode.com/problems/student-attendance-record-i/description/)(Easy)
-- [583. Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings/description/)
-
+- [583. Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings/description/)(Medium)
