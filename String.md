@@ -389,15 +389,15 @@ class Solution {
 Given two words word1 and word2, find the minimum number of steps required to make word1 and word2 the same, where in each step you can delete one character in either string.
 
 **Example 1:**
-
-    Input: "sea", "eat"
-    Output: 2
-    Explanation: You need one step to make "sea" to "ea" and another step to make "eat" to "ea".
+```
+Input: "sea", "eat"
+Output: 2
+Explanation: You need one step to make "sea" to "ea" and another step to make "eat" to "ea".
+```
 
 **Note:**
-
-    The length of given words won't exceed 500.
-    Characters in given words can only be lower-case letters.
+1. The length of given words won't exceed 500.
+2. Characters in given words can only be lower-case letters.
 
 
 ```python
@@ -494,4 +494,26 @@ class Solution {
         return mem[lenT][lenS];
     }
 }
+```
+
+[541. Reverse String II](https://leetcode.com/problems/reverse-string-ii/description/)
+
+Given a string and an integer `k`, you need to reverse the first k characters for every `2k` characters counting from the start of the string. If there are less than `k` characters left, reverse all of them. If there are less than `2k` but greater than or equal to `k` characters, then reverse the first `k` characters and left the other as original.
+
+**Example 1:**
+```
+Input: s = "abcdefg", k = 2
+Output: "bacdfeg"
+```
+
+**Restrictions:**
+1. The string consists of lower English letters only.
+2. Length of the given string and k will in the range [1, 10000]
+
+```python
+#author:
+```
+
+```java
+//author:
 ```
