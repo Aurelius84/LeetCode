@@ -36,3 +36,7 @@
 - [551. Student Attendance Record I ](https://leetcode.com/problems/student-attendance-record-i/description/)(Easy)
 - [583. Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings/description/)(Medium)
 - [115. Distinct Subsequences](https://leetcode.com/problems/distinct-subsequences/description/)(Hard)
+- [541. Reverse String II](https://leetcode.com/problems/reverse-string-ii/description/)(Easy)
+
+## Forth Week
+- [557. Reverse Words in a String III](https://leetcode.com/problems/reverse-words-in-a-string-iii/description/)(Easy)
