@@ -385,7 +385,8 @@ class Solution {
 ```
 
 [583. Delete Operation for Two Strings](https://leetcode.com/problems/delete-operation-for-two-strings/description/)
- Given two words word1 and word2, find the minimum number of steps required to make word1 and word2 the same, where in each step you can delete one character in either string.
+
+Given two words word1 and word2, find the minimum number of steps required to make word1 and word2 the same, where in each step you can delete one character in either string.
 
 **Example 1:**
 
@@ -450,5 +451,47 @@ class Solution {
     }
     return len1 + len2 - 2 * dp[len1][len2];
   }
+}
+```
+
+[115. Distinct Subsequences](https://leetcode.com/problems/distinct-subsequences/description/)
+
+Given a string S and a string T, count the number of distinct subsequences of S which equals T.
+
+A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, `"ACE"` is a subsequence of `"ABCDE"` while `"AEC"` is not).
+
+Here is an example:
+**S** = `"rabbbit"`, **T** = `"rabbit"`
+
+Return `3`.
+
+
+```python
+#author:
+```
+
+```java
+//author: KillersDeath
+class Solution {
+    public int numDistinct(String s, String t) {
+        int lenS=s.length(), lenT = t.length();
+        int [][]mem = new int[lenT+1][lenS+1];
+
+        //把第一行置为1，表示空字符串是任何字符的子序列
+        for(int j=0; j<=lenS; j++){
+            mem[0][j] = 1;
+        }
+        //依次遍历s和t
+        for(int i=0; i<lenT; i++){
+            for(int j=0; j<lenS; j++){
+                if(t.charAt(i) == s.charAt(j)){
+                    mem[i+1][j+1] = mem[i][j] + mem[i+1][j];
+                }else{
+                    mem[i+1][j+1] = mem[i+1][j];
+                }
+            }
+        }
+        return mem[lenT][lenS];
+    }
 }
 ```
