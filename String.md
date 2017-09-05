@@ -558,5 +558,25 @@ Output: "s'teL ekat edoCteeL tsetnoc"
 ```
 
 ```java
-//author:
+//author: KillersDeath
+class Solution{
+  public String reverseWords(String s){
+    char[] s_arr = s.toCharArray();
+    int len = s_arr.length();
+    for(int begin=0, end=1; begin<=len; begin++){
+      if(end==len || s_arr[end]==' '){
+        swap(s_arr, begin, end);
+        begin = end + 1;
+      }
+    }
+    return String.valueOf(s_arr);
+  }
+  public void swap(char[] arr, int l, int r){
+    while(l<r){
+      char temp = arr[l];
+      arr[l++] = arr[r];
+      arr[r--] = temp;
+    }
+  }
+}
 ```
