@@ -515,7 +515,28 @@ Output: "bacdfeg"
 ```
 
 ```java
-//author:
+//author:KillersDeath
+class Solution {
+  public String reverseStr(String s, int k){
+    char[] s_arr = s.toCharArray();
+    int len = s_arr.length;
+    int begin = 0;
+    while(begin < len){
+      int end = Math.min(begin+k-1,len-1);
+      swap(s_arr, begin, end);
+      begin += 2*k;
+    }
+    return String.valueOf(s_arr);
+  }
+  public void swap(char[] arr, int l, int r){
+    while(l<r){
+      char temp = arr[l];
+      arr[l++] = arr[r];
+      arr[r--] = temp;
+    }
+  }
+}
+
 ```
 
 [557. Reverse Words in a String III](https://leetcode.com/problems/reverse-words-in-a-string-iii/description/)
