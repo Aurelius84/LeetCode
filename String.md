@@ -613,11 +613,16 @@ Output:
 5. You may assume each given directory info represents a unique directory. Directory path and file info are separated by a single blank space.
 
 **Follow-up beyond contest:**
-1. Imagine you are given a real file system, how will you search files? DFS or BFS?
-2. If the file content is very large (GB level), how will you modify your solution?
-3. If you can only read the file by 1kb each time, how will you modify your solution?
-4. What is the time complexity of your modified solution? What is the most time-consuming part and memory consuming part of it? How to optimize?
-5. How to make sure the duplicated files you find are not false positive?
+1. **Imagine you are given a real file system, how will you search files? DFS or BFS?**
+`Advice:`In general, BFS will use more memory then DFS. However BFS can take advantage of the locality of files in inside directories, and therefore will probably be faster.
+2. **If the file content is very large (GB level), how will you modify your solution?**
+`Advice:`In a real life solution we will not hash the entire file content, since it's not practical. Instead we will first map all the files according to size. Files with different sizes are guaranteed to be different. We will than hash a small part of the files with equal sizes (using MD5 for example). Only if the md5 is the same, we will compare the files byte by byte.
+3. **If you can only read the file by 1kb each time, how will you modify your solution?**
+`Advice:`This won't change the solution. We can create the hash from the 1kb chunks, and then read the entire file if a full byte by byte comparison is required.
+4. **What is the time complexity of your modified solution? What is the most time-consuming part and memory consuming part of it? How to optimize?**
+`Advice:`Time complexity is O(n^2 * k) since in worse case we might need to compare every file to all others. k is the file size
+5. **How to make sure the duplicated files you find are not false positive?**
+`Advice:`We will use several filters to compare: File size, Hash and byte by byte comparisons.
 
 ```python
 #author:inyouth
