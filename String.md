@@ -665,6 +665,28 @@ class Solution:
         return result_list
 ```
 
+```python
+# author : sweatsword
+def findDuplicate(self, paths):
+    """
+    :type paths: List[str]
+    :rtype: List[List[str]]
+    """
+    from collections import defaultdict
+    # dict  key:content value:full path;default type of value:list[]
+    d=defaultdict(list) 
+    # eg before: [["root/a a/txt(abcd) b.txt(efgh)"...]]
+    for item in map(lambda x:x.split(),paths): #  after splited :[["root/a",a.txt(abcd)","b.txt(efgh)"]...]
+        directory=item[0]
+        files=map(lambda x:x.split('('),item[1:]) # after splited :[["a.txt","(abcd)"],["b.txt,(efgh)"]...]
+        for file in files:
+            filename=file[0]
+            filecontent=file[1][:-1]
+            d[filecontent].append(directory+'/'+filename)
+    res=[v for k,v in d.items() if len(v)>1] # duplicated if len(v)>1
+    return res
+```
+
 ```java
 //author: KillersDeath
 ```
