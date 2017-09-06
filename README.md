@@ -41,3 +41,4 @@
 ## Forth Week
 - [557. Reverse Words in a String III](https://leetcode.com/problems/reverse-words-in-a-string-iii/description/)(Easy)
 - [609. Find Duplicate File in System](https://leetcode.com/problems/find-duplicate-file-in-system/description/)(Medium)
+- [564. Find the Closest Palindrome](https://leetcode.com/problems/find-the-closest-palindrome/)(Hard)
