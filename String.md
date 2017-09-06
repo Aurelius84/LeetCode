@@ -620,7 +620,49 @@ Output:
 5. How to make sure the duplicated files you find are not false positive?
 
 ```python
-#author:
+#author:inyouth
+class Solution:
+    def findDuplicate(self, paths):
+        """
+        :type paths: List[str]
+        :rtype: List[List[str]]
+        """
+        # 定义一个字典保持键值对，键是文本内容，值是文本绝对路径
+        my_dict = {}
+        for item in paths:
+            # 空格分割每一项
+            result = item.split(" ")
+            # 获取路径的父级路径
+            item_directory_path = result[0]
+            if len(result) > 1:
+                for i in range(1, len(result)):
+                    # 获取当前路径名称
+                    file_path = result[i].split("(")[0]
+                    # 拼装绝对路径
+                    absolute_path = item_directory_path + "/" + file_path
+                    # 获取文本信息
+                    file_content = result[i].split(")")[0].split("(")[1]
+                    # 判断整个文本的键是否已经在字典中存在，如果存在，加入list中
+                    if file_content in my_dict.keys():
+                        my_dict[file_content].append(absolute_path)
+                    else:
+                        # 不存在，创建list 添加键值对
+                        new_list = []
+                        new_list.append(absolute_path)
+                        my_dict[file_content] = new_list
+
+        result_list = []
+        for key, value in my_dict.items():
+            '''
+            遍历键值对。判断，整个键 得值得list，长度是否大于一，
+            大于1，说明 有两个文件或者以上，文本值是相同的，需要放入最后结果
+            等于1，说明只存在一个文件，不需要放入最后结果中
+            '''
+
+            if len(value) > 1:
+                result_list.append(value)
+
+        return result_list
 ```
 
 ```java
