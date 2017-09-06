@@ -745,7 +745,38 @@ Output: "121"
 
 
 ```python
-#author:
+#author:sweatsword
+class Solution(object):
+    def nearestPalindromic(self, n):
+        """
+        :type n: str
+        :rtype: str
+        """
+        # 将数分为左右各半,检查half+1,half-1,和half的回文数   eg:1234-> [1221,1331,1111]
+        div, mod = divmod(len(n), 2)
+        half = n[0:div + 1] if mod==1 else n[0:div] # 奇数长度和偶数长度分开处理,统一形式我不会
+        num1 = str(int(half) + 1) # 加1可能导致位数增加
+        num2 = str(int(half) - 1) # 减1可能导致位数减少
+        num3 = str(int(half))
+        # 设 n=len(half),n=1,2,3,4..
+        if mod == 1:
+            # half加1位数不变,12->121,1->11;否则,half=10**n-1,则num1=10**(2n-1)+1
+            num1 = int(num1[:-1] + num1[::-1]) if len(half) == len(num1) else 10**(2*len(half)-1)+1
+            # half减1位数不变,12->121;否则,half=10**n,num1=10**(2(n-1))-1
+            num2 = int(num2[:-1] +num2[::-1]) if len(half) ==len(num2) else 10**(2*(len(half)-1))-1
+            num3 = int(num3[:-1] +num3[::-1])
+        else:
+            # if len(half+1)==len(half) 12->1221;否则,half=10**n-1,num1=10**(n+1)+1
+            num1 = int(num1 + num1[::-1]) if len(half) == len(num1) else 10**(len(half)+1)+1
+            # if len(half-1)==len(half)  12->1221;否则,half=10**n,nums2=10**(2n-1)-1
+            num2 = int(num2 + num2[::-1]) if len(half) == len(num2) and int(half)!=1 else 10**(2*(len(half))-1)-1
+            num3 = int(num3+ num3[::-1])
+        n = int(n)
+        closests = sorted([[abs(num1 - n), num1], [abs(num2 - n), num2], [abs(num3 - n), num3]])
+        if closests[0][1] == n: # 最近的回文数是自己,选次近的
+            return str(closests[1][1])
+        else:
+            return str(closests[0][1])
 ```
 
 ```java
