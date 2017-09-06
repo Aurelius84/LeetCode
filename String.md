@@ -726,6 +726,36 @@ class Solution {
     }
 }
 ```
+```java
+//author: Then
+public List<List<String>> findDuplicate(String[] paths) {
+        Map<String,List<String>> fileMap = new HashMap<>();
+        for (String dir : paths) {
+            String []tmp = dir.split(" ");
+            String path = tmp[0] + "/";
+            for (int j = 1; j < tmp.length; j++) {
+                int spaceIndex = tmp[j].indexOf('(');
+                String fileName = tmp[j].substring(0,spaceIndex);
+                String fileContent = tmp[j].substring(spaceIndex+1,tmp[j].length()-1);
+                List<String> fileList = fileMap.get(fileContent);
+                if(fileList != null){
+                    fileList.add(path + fileName);
+                }else {
+                    fileList = new LinkedList<>();
+                    fileList.add(path + fileName);
+                    fileMap.put(fileContent,fileList);
+                }
+            }
+        }
+        List<List<String>> result = new LinkedList<>();
+        for(List<String> value:fileMap.values()){
+            if(value.size() > 1){
+                result.add(value);
+            }
+        }
+        return result;
+    }
+```
 
 [564. Find the Closest Palindrome](https://leetcode.com/problems/find-the-closest-palindrome/)
 
