@@ -844,5 +844,69 @@ Returns the index of the first occurrence of needle in haystack, or -1 if needle
 ```
 
 ```java
-//author: 
+//author: Then
+//原数字，最近的回文数字，最近距离
+    long numN,result,minAbs = Long.MAX_VALUE;
+    public String nearestPalindromic(String n) {
+        numN = Long.valueOf(n);
+        //多一位情况下的最近距离和少一位情况下的最近距离
+        long limit = 1,lowerLimit ,upperLimit ;
+        for (int i = 1; i < n.length(); i++) {
+            limit *= 10;
+        }
+        if(n.length()==1){
+            lowerLimit = numN-1;
+        }else {
+            lowerLimit = limit-1;
+        }
+        upperLimit = (limit*10)+1;
+        //比较，获得最近距离
+        compare(upperLimit);
+        compare(lowerLimit);
+        find(n.toCharArray());
+        return String.valueOf(result);
+    }
+    
+    //遍历原数字的左半部分，每一位考虑+1和-1后的数字，并比较是否小于最近距离
+    //最后考虑左半部分不变，形成的回文字符串是否小于最近距离
+    public void find(char []num){
+        char []tmpUp = new char[num.length];
+        char []tmpLow = new char[num.length];
+        for (int i = 0; i < num.length; i++) {
+            tmpUp[i] = '0';
+            tmpLow[i] = '9';
+        }
+        for (int i = 0,j=num.length-1; i <= j; i++,j--) {
+            long upperLimit = Long.MAX_VALUE,lowerLimit = Long.MAX_VALUE;
+            if(num[i] > '0'){
+                tmpLow[j] = tmpLow[i] = (char)(num[i]-1);
+                lowerLimit = Long.valueOf(String.valueOf(tmpLow));
+            }
+            if(num[i] < '9'){
+                tmpUp[j] = tmpUp[i] = (char)(num[i]+1);
+                upperLimit = Long.valueOf(String.valueOf(tmpUp));
+            }
+            num[j] = num[i];
+            compare(upperLimit);
+            compare(lowerLimit);
+            tmpUp[j] = tmpUp[i] = tmpLow[i] = tmpLow[j] = num[i];
+        }
+        long limit = Long.valueOf(String.valueOf(num));
+        if(limit != numN){
+            compare(limit);
+        }
+    }
+
+    //取最近距离
+    public void compare(long limit){
+        long abs = Math.abs(limit-numN);
+        if(abs<minAbs){
+            minAbs = abs;
+            result = limit;
+        }else if(abs==minAbs){
+            if(limit<result){
+                result = limit;
+            }
+        }
+    }
 ```
