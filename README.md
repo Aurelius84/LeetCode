@@ -1,5 +1,5 @@
 # LeetCode Is Precious deposits
-## A group of Bupt coders, Coding every day!！！
+## A group of Bupt coders, Coding every day!
 
 - **The overall plan is as follows：**
   - One day a question
