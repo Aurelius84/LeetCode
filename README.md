@@ -43,3 +43,4 @@
 - [609. Find Duplicate File in System](https://leetcode.com/problems/find-duplicate-file-in-system/description/)(Medium)
 - [564. Find the Closest Palindrome](https://leetcode.com/problems/find-the-closest-palindrome/)(Hard)
 - [28. Implement strStr()](https://leetcode.com/problems/implement-strstr/description/)(Easy)
+- [22. Generate Parentheses](https://leetcode.com/problems/generate-parentheses/description/)(Medium)
