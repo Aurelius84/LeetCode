@@ -927,7 +927,32 @@ For example, given n = 3, a solution set is:
 ```
 
 ```python
-#author:
+#author:sweatsword
+class Solution(object):
+    def generateParenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        # idea:  *(*)  * can be empty 
+        # 如果在括号里放入i个括号,左边只能放n-i-1个括号(已经有一个括号了);初始化:若n=0,return ''    
+        self.basic = "{}({})"   
+        from collections import defaultdict
+        #  S is a dict,where key is n,value is list include all possible Parentheses
+        #  S[n]=[S[n-i-1](S[i])]   i from 0 to n-1 ,S[0]=['']
+        # eg: S[0]==[''],S[1]=['()()','(())']... roughly,S[1]=[S0(S0)],S[2]=[S1(S0),S0(S1)]
+        self.S = defaultdict(list)
+        self.S[0].append('') # S0 is ''
+        return self.GetS(n)
+
+    def GetS(self, n):
+        S = self.S
+        if S[n]:  return S[n] # if exist ,get the value directly    
+        else:
+            for i in range(n):
+                # go through the S[n-i-1] 和 S[i] put them into *(*),add the results in to the list of S[n]
+                S[n].extend(self.basic.format(x, y) for x in self.GetS(n - i - 1) for y in self.GetS(i))           
+        return S[n]
 ```
 
 ```java
