@@ -830,21 +830,7 @@ class Solution(object):
 ```
 
 ```java
-//author:
-```
-
-[28. Implement strStr()](https://leetcode.com/problems/implement-strstr/description/)
-
-Implement strStr().
-
-Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
-
-```python
-#author:
-```
-
-```java
-//author: Then
+//author:Then
 //原数字，最近的回文数字，最近距离
     long numN,result,minAbs = Long.MAX_VALUE;
     public String nearestPalindromic(String n) {
@@ -866,7 +852,7 @@ Returns the index of the first occurrence of needle in haystack, or -1 if needle
         find(n.toCharArray());
         return String.valueOf(result);
     }
-    
+
     //遍历原数字的左半部分，每一位考虑+1和-1后的数字，并比较是否小于最近距离
     //最后考虑左半部分不变，形成的回文字符串是否小于最近距离
     public void find(char []num){
@@ -909,4 +895,41 @@ Returns the index of the first occurrence of needle in haystack, or -1 if needle
             }
         }
     }
+```
+
+[28. Implement strStr()](https://leetcode.com/problems/implement-strstr/description/)
+
+Implement strStr().
+
+Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+```python
+#author:
+```
+
+```java
+//author:
+```
+
+[22. Generate Parentheses](https://leetcode.com/problems/generate-parentheses/description/)
+
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+For example, given n = 3, a solution set is:
+```
+[
+  "((()))",
+  "(()())",
+  "(())()",
+  "()(())",
+  "()()()"
+]
+```
+
+```python
+#author:
+```
+
+```java
+//author:
 ```
