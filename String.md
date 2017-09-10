@@ -994,7 +994,28 @@ Given s = "leetcode", return "leotcede".
 Note:
 The vowels does not include the letter "y".
 
-
+```python
+# author:sweatsword
+class Solution(object):
+    def reverseVowels(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        # idea: swap i(th) with n-i(th) vowels
+        # where n is total number of vowels in s.i is from 1 to n
+        s=list(s)
+        vowels=('a','e','i','o','u','A','E','I','O','U')
+        i=0;j=len(s)-1
+        while (i<j):
+            while i<j and s[i] not in vowels:
+                i+=1
+            while i<j and s[j] not in vowels:
+                j-=1
+            s[i],s[j]=s[j],s[i]
+            i+=1;j-=1
+        return ''.join(s)
+```
 
 [97. Interleaving String](97. Interleaving String)
 Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
