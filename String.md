@@ -1008,3 +1008,43 @@ s2 = "dbbca",
 When s3 = "aadbbcbcac", return true.
 When s3 = "aadbbbaccc", return false.
 ```
+
+```python
+# author :sweatsword
+class Solution(object):
+    def isInterleave(self, s1, s2, s3):
+        """
+        :type s1: str
+        :type s2: str
+        :type s3: str
+        :rtype: bool
+        """
+        # idea: Recursively search and skip the subtree was checked
+        self.s1 = s1;self.s2 = s2;self.s3 = s3
+        self.res = False  # final result
+        from collections import defaultdict
+        self.d = defaultdict(int)  # dict,key:(i,j),value:whether the subtree(i,j) was checked.
+        if len(s3) != len(s2) + len(s1):
+            return False  # length doesn't match,just return
+        self.travel(0, 0, 0)
+        return self.res
+
+    def travel(self, i, j, k):
+        if not self.res:  # find until there exists a successful path
+            if i + j == len(self.s3):  # s3 is exhausted
+                self.res = True
+                return
+            if self.d[i, j] == 0:  # if subtree(i,j) wasn't visit
+                if i < len(self.s1) and self.s3[k] == self.s1[i]:  # Matches the character of s1
+                    self.d[i, j] = 1
+                    self.travel(i + 1, j, k + 1)
+                if j < len(self.s2) and self.s3[k] == self.s2[j]:  # Matches the character of s2
+                    self.d[i, j] = 1
+                    self.travel(i, j + 1, k + 1)
+                    # both not equal,skip this subtree(i,j)
+print(Solution().isInterleave(
+    'bbbbbabbbbabaababaaaabbababbaaabbabbaaabaaaaababbbababbbbbabbbbababbabaabababbbaabababababbbaaababaa',
+    'babaaaabbababbbabbbbaabaabbaabbbbaabaaabaababaaaabaaabbaaabaaaabaabaabbbbbbbbbbbabaaabbababbabbabaab',
+    'babbbabbbaaabbababbbbababaabbabaabaaabbbbabbbaaabbbaaaaabbbbaabbaaabababbaaaaaabababbababaababbababbbababbbbaaaabaabbabbaaaaabbabbaaaabbbaabaaabaababaababbaaabbbbbabbbbaabbabaabbbbabaaabbababbabbabbab'))
+
+```
