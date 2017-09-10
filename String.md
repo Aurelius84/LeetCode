@@ -956,7 +956,28 @@ class Solution(object):
 ```
 
 ```java
-//author:
+//author:Then & KillersDeath
+List<String> result = new LinkedList<>();
+    public List<String> generateParenthesis(int n) {
+        char []src = new char[n*2];
+        create(src,0,n,n);
+        return result;
+    }
+
+    public void create(char[] src,int count,int left,int right){
+        if(count == src.length){
+            result.add(String.valueOf(src));
+            return;
+        }
+        if(left>0){
+            src[count] = '(';
+            create(src,count+1,left-1,right);
+        }
+        if(right>left){
+            src[count] = ')';
+            create(src,count+1,left,right-1);
+        }
+    }
 ```
 
 [345. Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/description/)
