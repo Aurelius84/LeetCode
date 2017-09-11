@@ -994,7 +994,28 @@ Given s = "leetcode", return "leotcede".
 Note:
 The vowels does not include the letter "y".
 
-
+```python
+# author:sweatsword
+class Solution(object):
+    def reverseVowels(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        # idea: swap i(th) with n-i(th) vowels
+        # where n is total number of vowels in s.i is from 1 to n
+        s=list(s)
+        vowels=('a','e','i','o','u','A','E','I','O','U')
+        i=0;j=len(s)-1
+        while (i<j):
+            while i<j and s[i] not in vowels:
+                i+=1
+            while i<j and s[j] not in vowels:
+                j-=1
+            s[i],s[j]=s[j],s[i]
+            i+=1;j-=1
+        return ''.join(s)
+```
 
 [97. Interleaving String](https://leetcode.com/problems/interleaving-string/description/)
 Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
@@ -1009,6 +1030,7 @@ When s3 = "aadbbcbcac", return true.
 When s3 = "aadbbbaccc", return false.
 ```
 
+<<<<<<< HEAD
 [38. Count and Say](https://leetcode.com/problems/count-and-say/hints/)
 The count-and-say sequence is the sequence of integers with the first five terms as following:
 ```
@@ -1035,3 +1057,44 @@ Example 2:
 Input: 4
 Output: "1211"
 ```
+=======
+```python
+# author :sweatsword
+class Solution(object):
+    def isInterleave(self, s1, s2, s3):
+        """
+        :type s1: str
+        :type s2: str
+        :type s3: str
+        :rtype: bool
+        """
+        # idea: Recursively search and skip the subtree was checked
+        self.s1 = s1;self.s2 = s2;self.s3 = s3
+        self.res = False  # final result
+        from collections import defaultdict
+        self.d = defaultdict(int)  # dict,key:(i,j),value:whether the subtree(i,j) was checked.
+        if len(s3) != len(s2) + len(s1):
+            return False  # length doesn't match,just return
+        self.travel(0, 0, 0)
+        return self.res
+
+    def travel(self, i, j, k):
+        if not self.res:  # find until there exists a successful path
+            if i + j == len(self.s3):  # s3 is exhausted
+                self.res = True
+                return
+            if self.d[i, j] == 0:  # if subtree(i,j) wasn't visit
+                if i < len(self.s1) and self.s3[k] == self.s1[i]:  # Matches the character of s1
+                    self.d[i, j] = 1
+                    self.travel(i + 1, j, k + 1)
+                if j < len(self.s2) and self.s3[k] == self.s2[j]:  # Matches the character of s2
+                    self.d[i, j] = 1
+                    self.travel(i, j + 1, k + 1)
+                    # both not equal,skip this subtree(i,j)
+print(Solution().isInterleave(
+    'bbbbbabbbbabaababaaaabbababbaaabbabbaaabaaaaababbbababbbbbabbbbababbabaabababbbaabababababbbaaababaa',
+    'babaaaabbababbbabbbbaabaabbaabbbbaabaaabaababaaaabaaabbaaabaaaabaabaabbbbbbbbbbbabaaabbababbabbabaab',
+    'babbbabbbaaabbababbbbababaabbabaabaaabbbbabbbaaabbbaaaaabbbbaabbaaabababbaaaaaabababbababaababbababbbababbbbaaaabaabbabbaaaaabbabbaaaabbbaabaaabaababaababbaaabbbbbabbbbaabbabaabbbbabaaabbababbabbabbab'))
+
+```
+>>>>>>> 341f1afd3b08c407cd1cfc9ebd1ed50883179fe1
