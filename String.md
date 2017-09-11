@@ -1030,33 +1030,6 @@ When s3 = "aadbbcbcac", return true.
 When s3 = "aadbbbaccc", return false.
 ```
 
-<<<<<<< HEAD
-[38. Count and Say](https://leetcode.com/problems/count-and-say/hints/)
-The count-and-say sequence is the sequence of integers with the first five terms as following:
-```
-1.     1
-2.     11
-3.     21
-4.     1211
-5.     111221
-1 is read off as "one 1" or 11.
-11 is read off as "two 1s" or 21.
-21 is read off as "one 2, then one 1" or 1211.
-```
-Given an integer n, generate the nth term of the count-and-say sequence.
-
-Note: Each term of the sequence of integers will be represented as a string.
-
-Example 1:
-```
-Input: 1
-Output: "1"
-```
-Example 2:
-```
-Input: 4
-Output: "1211"
-```
 =======
 ```python
 # author :sweatsword
@@ -1091,10 +1064,10 @@ class Solution(object):
                     self.d[i, j] = 1
                     self.travel(i, j + 1, k + 1)
                     # both not equal,skip this subtree(i,j)
-print(Solution().isInterleave(
+	print(Solution().isInterleave(
     'bbbbbabbbbabaababaaaabbababbaaabbabbaaabaaaaababbbababbbbbabbbbababbabaabababbbaabababababbbaaababaa',
     'babaaaabbababbbabbbbaabaabbaabbbbaabaaabaababaaaabaaabbaaabaaaabaabaabbbbbbbbbbbabaaabbababbabbabaab',
     'babbbabbbaaabbababbbbababaabbabaabaaabbbbabbbaaabbbaaaaabbbbaabbaaabababbaaaaaabababbababaababbababbbababbbbaaaabaabbabbaaaaabbabbaaaabbbaabaaabaababaababbaaabbbbbabbbbaabbabaabbbbabaaabbababbabbabbab'))
 
 ```
->>>>>>> 341f1afd3b08c407cd1cfc9ebd1ed50883179fe1
+
