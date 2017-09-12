@@ -442,7 +442,7 @@ class Solution {
   public int minDistance(String word1, String word2){
     int len1 = word1.length(), len2 = word2.length();
     //保留最长公共子串长度
-    int dp[][] = new int[len1+1][len2+1]
+    int dp[][] = new int[len1+1][len2+1];
 
     for(int i=0; i<=len1; i++){
       for(int j=0; j<=len2; j++){
@@ -728,33 +728,35 @@ class Solution {
 ```
 ```java
 //author: Then
-public List<List<String>> findDuplicate(String[] paths) {
-        Map<String,List<String>> fileMap = new HashMap<>();
-        for (String dir : paths) {
-            String []tmp = dir.split(" ");
-            String path = tmp[0] + "/";
-            for (int j = 1; j < tmp.length; j++) {
-                int spaceIndex = tmp[j].indexOf('(');
-                String fileName = tmp[j].substring(0,spaceIndex);
-                String fileContent = tmp[j].substring(spaceIndex+1,tmp[j].length()-1);
-                List<String> fileList = fileMap.get(fileContent);
-                if(fileList != null){
-                    fileList.add(path + fileName);
-                }else {
-                    fileList = new LinkedList<>();
-                    fileList.add(path + fileName);
-                    fileMap.put(fileContent,fileList);
+public class Soultion{
+    public List<List<String>> findDuplicate(String[] paths) {
+            Map<String,List<String>> fileMap = new HashMap<>();
+            for (String dir : paths) {
+                String []tmp = dir.split(" ");
+                String path = tmp[0] + "/";
+                for (int j = 1; j < tmp.length; j++) {
+                    int spaceIndex = tmp[j].indexOf('(');
+                    String fileName = tmp[j].substring(0,spaceIndex);
+                    String fileContent = tmp[j].substring(spaceIndex+1,tmp[j].length()-1);
+                    List<String> fileList = fileMap.get(fileContent);
+                    if(fileList != null){
+                        fileList.add(path + fileName);
+                    }else {
+                        fileList = new LinkedList<>();
+                        fileList.add(path + fileName);
+                        fileMap.put(fileContent,fileList);
+                    }
                 }
             }
-        }
-        List<List<String>> result = new LinkedList<>();
-        for(List<String> value:fileMap.values()){
-            if(value.size() > 1){
-                result.add(value);
+            List<List<String>> result = new LinkedList<>();
+            for(List<String> value:fileMap.values()){
+                if(value.size() > 1){
+                    result.add(value);
+                }
             }
-        }
-        return result;
+            return result;
     }
+}
 ```
 
 [564. Find the Closest Palindrome](https://leetcode.com/problems/find-the-closest-palindrome/)
@@ -830,6 +832,7 @@ class Solution(object):
 ```
 
 ```java
+public class Solution{
 //author:Then
 //原数字，最近的回文数字，最近距离
     long numN,result,minAbs = Long.MAX_VALUE;
@@ -895,6 +898,7 @@ class Solution(object):
             }
         }
     }
+}
 ```
 
 [28. Implement strStr()](https://leetcode.com/problems/implement-strstr/description/)
@@ -973,8 +977,10 @@ class Solution(object):
 ```
 
 ```java
+public class Soultion{
 //author:Then & KillersDeath
-List<String> result = new LinkedList<>();
+    List<String> result = new LinkedList<>();
+   
     public List<String> generateParenthesis(int n) {
         char []src = new char[n*2];
         create(src,0,n,n);
@@ -995,6 +1001,7 @@ List<String> result = new LinkedList<>();
             create(src,count+1,left,right-1);
         }
     }
+}
 ```
 
 [345. Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/description/)
@@ -1089,7 +1096,7 @@ class Solution(object):
 ```
 
 ```java
-author: dingyuanhao
+//author: dingyuanhao
 class Solution {
     public boolean isInterleave(String s1, String s2, String s3) {
         if ((s1.length()+s2.length())!=s3.length()) return false;
@@ -1143,4 +1150,31 @@ Example 2:
 ```
 Input: 4
 Output: "1211"
+```
+
+```java
+//author:Then
+public class Solution{
+    public String countAndSay(int n) {
+        StringBuilder result = new StringBuilder("1");
+        for (int i = 1; i < n; i++) {
+            int sameCount = 1;
+            char pre = result.charAt(0);
+            StringBuilder tmp = new StringBuilder();
+            for (int j = 1; j < result.length(); j++) {
+                char chartmp = result.charAt(j);
+                if( chartmp != pre){
+                    tmp.append(sameCount).append(pre);
+                    sameCount = 1;
+                    pre = chartmp;
+                }else {
+                    sameCount++;
+                }
+            }
+            tmp.append(sameCount).append(pre);
+            result = tmp;
+        }
+        return result.toString();
+    }
+}
 ```
