@@ -442,7 +442,7 @@ class Solution {
   public int minDistance(String word1, String word2){
     int len1 = word1.length(), len2 = word2.length();
     //保留最长公共子串长度
-    int dp[][] = new int[len1+1][len2+1]
+    int dp[][] = new int[len1+1][len2+1];
 
     for(int i=0; i<=len1; i++){
       for(int j=0; j<=len2; j++){
@@ -728,6 +728,7 @@ class Solution {
 ```
 ```java
 //author: Then
+public class Solution{
 public List<List<String>> findDuplicate(String[] paths) {
         Map<String,List<String>> fileMap = new HashMap<>();
         for (String dir : paths) {
@@ -755,6 +756,7 @@ public List<List<String>> findDuplicate(String[] paths) {
         }
         return result;
     }
+}
 ```
 
 [564. Find the Closest Palindrome](https://leetcode.com/problems/find-the-closest-palindrome/)
@@ -830,6 +832,7 @@ class Solution(object):
 ```
 
 ```java
+public class Sulotion{
 //author:Then
 //原数字，最近的回文数字，最近距离
     long numN,result,minAbs = Long.MAX_VALUE;
@@ -895,6 +898,7 @@ class Solution(object):
             }
         }
     }
+}
 ```
 
 [28. Implement strStr()](https://leetcode.com/problems/implement-strstr/description/)
@@ -957,6 +961,7 @@ class Solution(object):
 
 ```java
 //author:Then & KillersDeath
+public class Soultion{
 List<String> result = new LinkedList<>();
     public List<String> generateParenthesis(int n) {
         char []src = new char[n*2];
@@ -978,6 +983,7 @@ List<String> result = new LinkedList<>();
             create(src,count+1,left,right-1);
         }
     }
+}
 ```
 
 [345. Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/description/)
@@ -993,3 +999,54 @@ Given s = "leetcode", return "leotcede".
 ```
 Note:
 The vowels does not include the letter "y".
+
+[38. Count and Say](https://leetcode.com/problems/count-and-say/description/)
+The count-and-say sequence is the sequence of integers with the first five terms as following:
+```
+1.     1
+2.     11
+3.     21
+4.     1211
+5.     111221
+```
+1 is read off as "one 1" or 11.  
+11 is read off as "two 1s" or 21.  
+21 is read off as "one 2, then one 1" or 1211.  
+Given an integer n, generate the nth term of the count-and-say sequence.  
+Example 1:
+   ```
+   Input: 1
+   Output: "1"
+   ```
+Example 2:
+   ```
+  Input: 4
+  Output: "1211"
+   ```
+Note: Each term of the sequence of integers will be represented as a string.
+```java
+//author:Then
+public class Solution{
+    public String countAndSay(int n) {
+        StringBuilder result = new StringBuilder("1");
+        for (int i = 1; i < n; i++) {
+            int sameCount = 1;
+            char pre = result.charAt(0);
+            StringBuilder tmp = new StringBuilder();
+            for (int j = 1; j < result.length(); j++) {
+                char chartmp = result.charAt(j);
+                if( chartmp != pre){
+                    tmp.append(sameCount).append(pre);
+                    sameCount = 1;
+                    pre = chartmp;
+                }else {
+                    sameCount++;
+                }
+            }
+            tmp.append(sameCount).append(pre);
+            result = tmp;
+        }
+        return result.toString();
+    }
+}
+```
