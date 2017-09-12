@@ -442,7 +442,7 @@ class Solution {
   public int minDistance(String word1, String word2){
     int len1 = word1.length(), len2 = word2.length();
     //保留最长公共子串长度
-    int dp[][] = new int[len1+1][len2+1];
+    int dp[][] = new int[len1+1][len2+1]
 
     for(int i=0; i<=len1; i++){
       for(int j=0; j<=len2; j++){
@@ -728,7 +728,6 @@ class Solution {
 ```
 ```java
 //author: Then
-public class Solution{
 public List<List<String>> findDuplicate(String[] paths) {
         Map<String,List<String>> fileMap = new HashMap<>();
         for (String dir : paths) {
@@ -756,7 +755,6 @@ public List<List<String>> findDuplicate(String[] paths) {
         }
         return result;
     }
-}
 ```
 
 [564. Find the Closest Palindrome](https://leetcode.com/problems/find-the-closest-palindrome/)
@@ -832,7 +830,6 @@ class Solution(object):
 ```
 
 ```java
-public class Sulotion{
 //author:Then
 //原数字，最近的回文数字，最近距离
     long numN,result,minAbs = Long.MAX_VALUE;
@@ -898,7 +895,6 @@ public class Sulotion{
             }
         }
     }
-}
 ```
 
 [28. Implement strStr()](https://leetcode.com/problems/implement-strstr/description/)
@@ -912,7 +908,24 @@ Returns the index of the first occurrence of needle in haystack, or -1 if needle
 ```
 
 ```java
-//author:
+//author: KillersDeath
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int l1 = haystack.length(), l2 = needle.length();
+        if (l1 < l2) {
+            return -1;
+        } else if (l2 == 0) {
+            return 0;
+        }
+        int threshold = l1 - l2;
+        for (int i = 0; i <= threshold; ++i) {
+            if (haystack.substring(i, i+l2).equals(needle)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
 ```
 
 [22. Generate Parentheses](https://leetcode.com/problems/generate-parentheses/description/)
@@ -938,7 +951,7 @@ class Solution(object):
         :type n: int
         :rtype: List[str]
         """
-        # idea:  *(*)  * can be empty 
+        # idea:  *(*)  * can be empty
         # 如果在括号里放入i个括号,左边只能放n-i-1个括号(已经有一个括号了);初始化:若n=0,return ''    
         self.basic = "{}({})"   
         from collections import defaultdict
@@ -961,7 +974,6 @@ class Solution(object):
 
 ```java
 //author:Then & KillersDeath
-public class Soultion{
 List<String> result = new LinkedList<>();
     public List<String> generateParenthesis(int n) {
         char []src = new char[n*2];
@@ -983,7 +995,6 @@ List<String> result = new LinkedList<>();
             create(src,count+1,left,right-1);
         }
     }
-}
 ```
 
 [345. Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/description/)
@@ -1000,7 +1011,114 @@ Given s = "leetcode", return "leotcede".
 Note:
 The vowels does not include the letter "y".
 
-[38. Count and Say](https://leetcode.com/problems/count-and-say/description/)
+```python
+# author:sweatsword
+class Solution(object):
+    def reverseVowels(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        # idea: swap i(th) with n-i(th) vowels
+        # where n is total number of vowels in s.i is from 1 to n
+        s=list(s)
+        vowels=('a','e','i','o','u','A','E','I','O','U')
+        i=0;j=len(s)-1
+        while (i<j):
+            while i<j and s[i] not in vowels:
+                i+=1
+            while i<j and s[j] not in vowels:
+                j-=1
+            s[i],s[j]=s[j],s[i]
+            i+=1;j-=1
+        return ''.join(s)
+```
+
+[97. Interleaving String](https://leetcode.com/problems/interleaving-string/description/)
+Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
+
+For example,
+```
+Given:
+s1 = "aabcc",
+s2 = "dbbca",
+
+When s3 = "aadbbcbcac", return true.
+When s3 = "aadbbbaccc", return false.
+```
+
+=======
+```python
+# author :sweatsword
+class Solution(object):
+    def isInterleave(self, s1, s2, s3):
+        """
+        :type s1: str
+        :type s2: str
+        :type s3: str
+        :rtype: bool
+        """
+        # idea: Recursively search and skip the subtree was checked
+        self.s1 = s1;self.s2 = s2;self.s3 = s3
+        self.res = False  # final result
+        from collections import defaultdict
+        self.d = defaultdict(int)  # dict,key:(i,j),value:whether the subtree(i,j) was checked.
+        if len(s3) != len(s2) + len(s1):
+            return False  # length doesn't match,just return
+        self.travel(0, 0, 0)
+        return self.res
+
+    def travel(self, i, j, k):
+        if not self.res:  # find until there exists a successful path
+            if i + j == len(self.s3):  # s3 is exhausted
+                self.res = True
+                return
+            if self.d[i, j] == 0:  # if subtree(i,j) wasn't visit
+                if i < len(self.s1) and self.s3[k] == self.s1[i]:  # Matches the character of s1
+                    self.d[i, j] = 1
+                    self.travel(i + 1, j, k + 1)
+                if j < len(self.s2) and self.s3[k] == self.s2[j]:  # Matches the character of s2
+                    self.d[i, j] = 1
+                    self.travel(i, j + 1, k + 1)
+                    # both not equal,skip this subtree(i,j)
+	print(Solution().isInterleave(
+    'bbbbbabbbbabaababaaaabbababbaaabbabbaaabaaaaababbbababbbbbabbbbababbabaabababbbaabababababbbaaababaa',
+    'babaaaabbababbbabbbbaabaabbaabbbbaabaaabaababaaaabaaabbaaabaaaabaabaabbbbbbbbbbbabaaabbababbabbabaab',
+    'babbbabbbaaabbababbbbababaabbabaabaaabbbbabbbaaabbbaaaaabbbbaabbaaabababbaaaaaabababbababaababbababbbababbbbaaaabaabbabbaaaaabbabbaaaabbbaabaaabaababaababbaaabbbbbabbbbaabbabaabbbbabaaabbababbabbabbab'))
+
+```
+
+```java
+author: dingyuanhao
+class Solution {
+    public boolean isInterleave(String s1, String s2, String s3) {
+        if ((s1.length()+s2.length())!=s3.length()) return false;
+
+        boolean[][] matrix = new boolean[s2.length()+1][s1.length()+1];
+
+        matrix[0][0] = true;
+
+        for (int i = 1; i < matrix[0].length; i++){
+            matrix[0][i] = matrix[0][i-1]&&(s1.charAt(i-1)==s3.charAt(i-1));
+        }
+
+        for (int i = 1; i < matrix.length; i++){
+            matrix[i][0] = matrix[i-1][0]&&(s2.charAt(i-1)==s3.charAt(i-1));
+        }
+
+        for (int i = 1; i < matrix.length; i++){
+            for (int j = 1; j < matrix[0].length; j++){
+                matrix[i][j] = (matrix[i-1][j]&&(s2.charAt(i-1)==s3.charAt(i+j-1)))
+                        || (matrix[i][j-1]&&(s1.charAt(j-1)==s3.charAt(i+j-1)));
+            }
+        }
+
+        return matrix[s2.length()][s1.length()];
+    }
+}
+```
+
+[38. Count and Say](https://leetcode.com/problems/count-and-say/hints/)(Easy)
 The count-and-say sequence is the sequence of integers with the first five terms as following:
 ```
 1.     1
@@ -1008,45 +1126,21 @@ The count-and-say sequence is the sequence of integers with the first five terms
 3.     21
 4.     1211
 5.     111221
+1 is read off as "one 1" or 11.
+11 is read off as "two 1s" or 21.
+21 is read off as "one 2, then one 1" or 1211.
 ```
-1 is read off as "one 1" or 11.  
-11 is read off as "two 1s" or 21.  
-21 is read off as "one 2, then one 1" or 1211.  
-Given an integer n, generate the nth term of the count-and-say sequence.  
-Example 1:
-   ```
-   Input: 1
-   Output: "1"
-   ```
-Example 2:
-   ```
-  Input: 4
-  Output: "1211"
-   ```
+Given an integer n, generate the nth term of the count-and-say sequence.
+
 Note: Each term of the sequence of integers will be represented as a string.
-```java
-//author:Then
-public class Solution{
-    public String countAndSay(int n) {
-        StringBuilder result = new StringBuilder("1");
-        for (int i = 1; i < n; i++) {
-            int sameCount = 1;
-            char pre = result.charAt(0);
-            StringBuilder tmp = new StringBuilder();
-            for (int j = 1; j < result.length(); j++) {
-                char chartmp = result.charAt(j);
-                if( chartmp != pre){
-                    tmp.append(sameCount).append(pre);
-                    sameCount = 1;
-                    pre = chartmp;
-                }else {
-                    sameCount++;
-                }
-            }
-            tmp.append(sameCount).append(pre);
-            result = tmp;
-        }
-        return result.toString();
-    }
-}
+
+Example 1:
+```
+Input: 1
+Output: "1"
+```
+Example 2:
+```
+Input: 4
+Output: "1211"
 ```
