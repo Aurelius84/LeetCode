@@ -66,7 +66,36 @@ Explanation:The maximum width existing in the fourth level with the length 8 (6,
 1. Answer will in the range of `32-bit` signed integer.
 
 ```python
-# author
+# author：KillersDeath
+class Solution(object):
+    def widthOfBinaryTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if root is None: return 0
+        self.width = 1
+        next_nodes = {0:root}
+        while next_nodes:
+            next_nodes = self.nextLevel(next_nodes)
+        return self.width
+
+    def nextLevel(self, ind_node):
+        from collections import OrderedDict
+        # 有序字典，只需统计头尾的index差值即可
+        next_nodes = OrderedDict()
+        min_ind, max_ind, min_flag= 0, 0, 1
+        for ind, node in ind_node.items():
+            if node is not None:
+                if min_flag:
+                    min_ind, min_flag = ind, 0
+                if node.left is not None:   # 向下一层，index 左孩子index翻倍
+                    next_nodes[2*ind] = node.left
+                if node.right is not None:  # 向下一层，index 右孩子index翻倍+1
+                    next_nodes[2*ind+1] = node.right
+                max_ind = ind
+        self.width = max(self.width, max_ind - min_ind + 1)
+        return next_nodes
 ```
 
 ```java
