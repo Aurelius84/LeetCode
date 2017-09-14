@@ -99,7 +99,41 @@ class Solution(object):
 ```
 
 ```java
-# author
+public class Solution{
+    //author:Then
+    public int widthOfBinaryTree(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+        int result = 1;
+        int left = -1,right;
+        List<TreeNode> treeNodeList = new LinkedList<>();
+        root.val = 0;
+        treeNodeList.add(root);
+        int size;
+        while((size = treeNodeList.size())!=0){
+            TreeNode treeNode = null;
+            for (int i = 0; i < size; i++) {
+                treeNode = treeNodeList.remove(0);
+                if(treeNode.left!=null){
+                    treeNode.left.val = treeNode.val*2;
+                    treeNodeList.add(treeNode.left);
+                }
+                if(treeNode.right!=null){
+                    treeNode.right.val = treeNode.val*2+1;
+                    treeNodeList.add(treeNode.right);
+                }
+                if(left == -1){
+                    left = treeNode.val;
+                }
+            }
+            right = treeNode.val;
+            result = Math.max(result,right-left+1);
+            left = -1;
+        }
+        return result;
+    }
+}
 ```
 
 [654. Maximum Binary Tree ](https://leetcode.com/problems/maximum-binary-tree/description/)
@@ -132,6 +166,4 @@ Output: return the tree root node representing the following tree:
 # author
 ```
 
-```java
-# author
-```
+
