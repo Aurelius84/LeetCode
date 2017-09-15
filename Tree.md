@@ -212,3 +212,41 @@ class Solution(object):
                 Q.append((T.right, level + 1))
         return -1
 ```
+```java```
+
+[99. Recover Binary Search Tree ](https://leetcode.com/problems/recover-binary-search-tree/description/)
+Two elements of a binary search tree (BST) are swapped by mistake.
+
+Recover the tree without changing its structure.
+Note:
+A solution using O(n) space is pretty straight forward. Could you devise a constant space solution?
+
+```python
+# author sweatsword
+class Solution(object):
+    def recoverTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: void Do not return anything, modify root in-place instead.
+        """
+        # Inorder-traversal of BFS are ascending series.
+        # Find two elements which violate this rule,then swap them
+        self.pre = self.mistake1 =self.mistake2=None
+        self.inoder(root)
+        self.mistake1.val, self.mistake2.val = self.mistake2.val, self.mistake1.val # swap
+    def inoder(self, T):
+        if T:
+            if T.left:
+                self.inoder(T.left)
+            if not self.pre:
+                self.pre = T
+            if T.val < self.pre.val: 
+                if not self.mistake1:  # violation 1
+                    self.mistake1=self.pre
+                    self.mistake2=T
+                else: 
+                    self.mistake2=T # violation 2
+            self.pre=T
+            if T.right:
+                self.inoder(T.right)
+```
