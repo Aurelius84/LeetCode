@@ -163,7 +163,52 @@ Output: return the tree root node representing the following tree:
 1. The size of the given array will be in the range [1,1000].
 
 ```python
-# author
+# author sweatsword
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+class Solution(object):
+    def constructMaximumBinaryTree(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: TreeNode
+        """
+        if not nums:
+            return
+        max_num=max(nums)
+        k=nums.index(max_num)
+        T=TreeNode(max_num)
+        T.left=self.constructMaximumBinaryTree(nums[:k])
+        T.right=self.constructMaximumBinaryTree(nums[k+1:])
+        return T
 ```
 
+[111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/description/)
 
+Given a binary tree, find its minimum depth.
+
+The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+
+```python
+# author sweatsword
+class Solution(object):
+    def minDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:return 0
+        from collections import deque
+        Q = deque([(root, 1)])  # Queue for Width-First-Travelsal
+        while Q:
+            T, level = Q.popleft()  # 出队
+            if T.right==T.left==None:   # Fisrt time visit a leaf node ,return  
+                return level
+            if T.left:
+                Q.append((T.left, level + 1))
+            if T.right:
+                Q.append((T.right, level + 1))
+        return -1
+```
