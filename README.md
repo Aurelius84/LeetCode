@@ -53,3 +53,4 @@
 - [654. Maximum Binary Tree ](https://leetcode.com/problems/maximum-binary-tree/description/)(Medium)
 - [111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/description/)(easy)
 - [99. Recover Binary Search Tree ](https://leetcode.com/problems/recover-binary-search-tree/description/)(Hard)
+- [297. Serialize and Deserialize Binary Tree ](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)(Hard)
