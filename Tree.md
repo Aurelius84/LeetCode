@@ -214,7 +214,33 @@ class Solution(object):
 ```
 
 ```java
-author:Thenn
+//author Then
+class Solution {
+    public int minDepth(TreeNode root) {
+       if(root == null){
+            return 0;
+        }
+        Queue<TreeNode> treeNodeQueue = new LinkedList<>();
+        treeNodeQueue.add(root);
+        int size,level=0;
+        while((size = treeNodeQueue.size())!=0){
+            level++;
+            for (int i = 0; i < size; i++) {
+                TreeNode treeNode = treeNodeQueue.poll();
+                if(treeNode.left==null && treeNode.right==null){
+                    return level;
+                }
+                if(treeNode.left!=null){
+                    treeNodeQueue.offer(treeNode.left);
+                }
+                if(treeNode.right!=null){
+                    treeNodeQueue.offer(treeNode.right);
+                }
+            }
+        }
+        return -1;
+    }
+}
 
 ```
 
