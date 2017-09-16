@@ -212,7 +212,11 @@ class Solution(object):
                 Q.append((T.right, level + 1))
         return -1
 ```
-```java```
+
+```java
+author:Thenn
+
+```
 
 [99. Recover Binary Search Tree ](https://leetcode.com/problems/recover-binary-search-tree/description/)
 Two elements of a binary search tree (BST) are swapped by mistake.
@@ -240,13 +244,46 @@ class Solution(object):
                 self.inoder(T.left)
             if not self.pre:
                 self.pre = T
-            if T.val < self.pre.val: 
+            if T.val < self.pre.val:
                 if not self.mistake1:  # violation 1
                     self.mistake1=self.pre
                     self.mistake2=T
-                else: 
+                else:
                     self.mistake2=T # violation 2
             self.pre=T
             if T.right:
                 self.inoder(T.right)
+```
+
+```java
+author: KillersDeath
+class Solution {
+    TreeNode firstNode, secondNode;
+    TreeNode preNode = new TreeNode(Integer.MIN_VALUE);
+
+    public void recoverTree(TreeNode root) {
+        //顺序遍历找到不合法节点
+        traverse(root);
+        // 交换值
+        int tmp = firstNode.val;
+        firstNode.val = secondNode.val;
+        secondNode.val = tmp;
+    }
+
+    private void traverse(TreeNode root){
+        if(root == null)
+            return ;
+        traverse(root.left);
+
+        if(firstNode == null && preNode.val >= root.val){
+            firstNode = preNode;
+        }
+
+        if(firstNode != null && preNode.val >= root.val){
+            secondNode = root;
+        }
+        preNode = root;
+        traverse(root.right);
+    }
+}
 ```
