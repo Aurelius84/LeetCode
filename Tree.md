@@ -212,37 +212,7 @@ class Solution(object):
                 Q.append((T.right, level + 1))
         return -1
 ```
-
-```java
-//author Then
-class Solution {
-    public int minDepth(TreeNode root) {
-       if(root == null){
-            return 0;
-        }
-        Queue<TreeNode> treeNodeQueue = new LinkedList<>();
-        treeNodeQueue.add(root);
-        int size,level=0;
-        while((size = treeNodeQueue.size())!=0){
-            level++;
-            for (int i = 0; i < size; i++) {
-                TreeNode treeNode = treeNodeQueue.poll();
-                if(treeNode.left==null && treeNode.right==null){
-                    return level;
-                }
-                if(treeNode.left!=null){
-                    treeNodeQueue.offer(treeNode.left);
-                }
-                if(treeNode.right!=null){
-                    treeNodeQueue.offer(treeNode.right);
-                }
-            }
-        }
-        return -1;
-    }
-}
-
-```
+```java```
 
 [99. Recover Binary Search Tree ](https://leetcode.com/problems/recover-binary-search-tree/description/)
 Two elements of a binary search tree (BST) are swapped by mistake.
@@ -270,120 +240,13 @@ class Solution(object):
                 self.inoder(T.left)
             if not self.pre:
                 self.pre = T
-            if T.val < self.pre.val:
+            if T.val < self.pre.val: 
                 if not self.mistake1:  # violation 1
                     self.mistake1=self.pre
                     self.mistake2=T
-                else:
+                else: 
                     self.mistake2=T # violation 2
             self.pre=T
             if T.right:
-                self.inoder(T.right)
-```
-
-```java
-author: KillersDeath
-class Solution {
-    TreeNode firstNode, secondNode;
-    TreeNode preNode = new TreeNode(Integer.MIN_VALUE);
-
-    public void recoverTree(TreeNode root) {
-        //顺序遍历找到不合法节点
-        traverse(root);
-        // 交换值
-        int tmp = firstNode.val;
-        firstNode.val = secondNode.val;
-        secondNode.val = tmp;
-    }
-
-    private void traverse(TreeNode root){
-        if(root == null)
-            return ;
-        traverse(root.left);
-
-        if(firstNode == null && preNode.val >= root.val){
-            firstNode = preNode;
-        }
-
-        if(firstNode != null && preNode.val >= root.val){
-            secondNode = root;
-        }
-        preNode = root;
-        traverse(root.right);
-    }
-}
-```
-
-[297. Serialize and Deserialize Binary Tree ](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)
-Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
-
-Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
-
-For example, you may serialize the following tree
-```
-   1
-  / \
- 2    3
-     / \
-    4   5
-```
-as `"[1,2,3,null,null,4,5]"`, just the same as [how LeetCode OJ serializes a binary tree](https://leetcode.com/faq/#binary-tree). You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.
-
-**Note:** Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.
-
-**Credits**:Special thanks to @Louis1992 for adding this problem and creating all test cases.
-
-```python
-```
-
-```java
-author:
-```
-
-[669. Trim a Binary Search Tree](https://leetcode.com/problems/trim-a-binary-search-tree/description/)
-Given a binary search tree and the lowest and highest boundaries as L and R, trim the tree so that all its elements lies in `[L, R]` (R >= L). You might need to change the root of the tree, so the result should return the new root of the trimmed binary search tree.
-
-**Example 1:**
-```
-Input: 
-    1
-   / \
-  0   2
-
-  L = 1
-  R = 2
-Output: 
-    1
-      \
-       2
-```
-
-**Example 2:**
-```
-Input: 
-    3
-   / \
-  0   4
-   \
-    2
-   /
-  1
-
-  L = 1
-  R = 3
-Output: 
-      3
-     / 
-   2   
-  /
- 1
-```
-
-
-```python
-# author:
-```
-
-```java
-//author:
+                self.inoder(T.right)  
 ```
