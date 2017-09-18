@@ -345,14 +345,14 @@ Given a binary search tree and the lowest and highest boundaries as L and R, tri
 
 **Example 1:**
 ```
-Input: 
+Input:
     1
    / \
   0   2
 
   L = 1
   R = 2
-Output: 
+Output:
     1
       \
        2
@@ -360,7 +360,7 @@ Output:
 
 **Example 2:**
 ```
-Input: 
+Input:
     3
    / \
   0   4
@@ -371,9 +371,9 @@ Input:
 
   L = 1
   R = 3
-Output: 
+Output:
       3
-     / 
+     /
    2   
   /
  1
@@ -427,6 +427,27 @@ class Codec:
 ```java
 //author:
 ```
-  
+
+[669. Find Largest Value in Each Tree Row](https://leetcode.com/problems/find-largest-value-in-each-tree-row/description/)
+You need to find the largest value in each row of a binary tree.
+
+**Example :**
+```
+Input:
+
+          1
+         / \
+        3   2
+       / \   \  
+      5   3   9
+
+Output: [1, 3, 9]
 ```
 
+```python
+# author:
+```
+
+```java
+//author:
+```
