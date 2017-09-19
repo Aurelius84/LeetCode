@@ -12,7 +12,7 @@
   - The third stage：Binary Search、Two Pointers、Heap、Binary Search Tree、Binary Indexed Tree、Recursion、Greedy、Union Find、Map
   - The fourth stage：Depth-first Search、Breadth-first Search、Design、Backtracking、Dynamic Programming、Divide and Conquer、Segment Tree、Reservior sampling、Geometry、Memoization、Bit Manipulation
 
-## First Week
+## First Week (array)
 - [643. Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/description/) (Easy)
 - [611. Valid Triangle Number I](https://leetcode.com/problems/valid-triangle-number/description/) (Medium)
 - [605. Can Place Flowers ](https://leetcode.com/problems/valid-triangle-number/description/) (Easy)
@@ -20,7 +20,7 @@
 - [41. First Missing Positive](https://leetcode.com/problems/first-missing-positive/description/) (Hard)
 - [57. Insert Interval](https://leetcode.com/problems/insert-interval/description/) (Hard)
 
-## Second Week
+## Second Week (array)
 - [661. Image Smoother](https://leetcode.com/problems/image-smoother/description/)(Easy)
 - [495. Teemo Attacking](https://leetcode.com/problems/teemo-attacking/description/)(Medium)
 - [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/description/)(Medium)
@@ -29,7 +29,7 @@
 - [537. Complex Number Multiplication ](https://leetcode.com/problems/complex-number-multiplication/description/)(Medium)
 - [657. Judge Route Circle ](https://leetcode.com/problems/judge-route-circle/description/)(Easy)
 
-## Third Week
+## Third Week (string)
 - [647. Palindromic Substrings ](https://leetcode.com/problems/palindromic-substrings/description/)(Medium)
 - [632. Smallest Range ](https://leetcode.com/problems/smallest-range/description/)(Hard)
 - [632. Construct String from Binary Tree ](https://leetcode.com/problems/construct-string-from-binary-tree/description/)(Easy)
@@ -38,7 +38,7 @@
 - [115. Distinct Subsequences](https://leetcode.com/problems/distinct-subsequences/description/)(Hard)
 - [541. Reverse String II](https://leetcode.com/problems/reverse-string-ii/description/)(Easy)
 
-## Forth Week
+## Forth Week (string)
 - [557. Reverse Words in a String III](https://leetcode.com/problems/reverse-words-in-a-string-iii/description/)(Easy)
 - [609. Find Duplicate File in System](https://leetcode.com/problems/find-duplicate-file-in-system/description/)(Medium)
 - [564. Find the Closest Palindrome](https://leetcode.com/problems/find-the-closest-palindrome/)(Hard)
@@ -47,7 +47,7 @@
 - [345. Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/description/)(Easy)
 - [97. Interleaving String](https://leetcode.com/problems/interleaving-string/description/)(Hard)
 
-## Fifth Week
+## Fifth Week (tree)
 - [38. Count and Say](https://leetcode.com/problems/count-and-say/hints/)(Easy)
 - [662. Maximum Width of Binary Tree ](https://leetcode.com/problems/maximum-width-of-binary-tree/description/)(Medium)
 - [654. Maximum Binary Tree ](https://leetcode.com/problems/maximum-binary-tree/description/)(Medium)
@@ -56,6 +56,6 @@
 - [297. Serialize and Deserialize Binary Tree ](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)(Hard)
 - [669. Trim a Binary Search Tree](https://leetcode.com/problems/trim-a-binary-search-tree/description/)(Easy)
 
-## Sixth Week
+## Sixth Week (tree)
 - [515. Find Largest Value in Each Tree Row](https://leetcode.com/problems/find-largest-value-in-each-tree-row/description/)(Medium)
 - [145. Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/description/)(Hard)
