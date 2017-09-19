@@ -451,3 +451,32 @@ Output: [1, 3, 9]
 ```java
 //author:
 ```
+
+[145. Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/description/)
+Given a binary tree, return the postorder traversal of its nodes' values.
+
+For example:
+Given binary tree `{1,#,2,3}`,
+
+**Example :**
+```
+Input:
+
+    1
+     \
+      2
+     /
+    3
+
+Output: [3, 2, 1]
+```
+
+**Note:** Recursive solution is trivial, could you do it iteratively?
+
+```python
+# author:
+```
+
+```java
+//author:
+```
