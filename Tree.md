@@ -445,7 +445,26 @@ Output: [1, 3, 9]
 ```
 
 ```python
-# author:
+# author: sweatsword
+# O(2V) v : # nodes in the tree
+
+class Solution(object):
+    def largestValues(self, root):
+
+        if not root:
+            return 0
+        from collections import deque,defaultdict
+        Q = deque([(root, 1)])  # Queue for Width-First-Travelsal
+        nodes = defaultdict(list)  # dict{key:level   value:nodes in this level}
+        while Q:
+            T, level = Q.popleft()  # 出队
+            nodes[level].append(T.val)
+            if T.left:
+                Q.append((T.left, level + 1))
+            if T.right:
+                Q.append((T.right, level + 1))
+        print(nodes)
+        return  list(map(max,nodes.values()))
 ```
 
 ```java
@@ -474,7 +493,32 @@ Output: [3, 2, 1]
 **Note:** Recursive solution is trivial, could you do it iteratively?
 
 ```python
-# author:
+# author: sweatsword
+class Solution(object):
+    def postorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        
+        if not root:
+            return []
+        S=[root] # 根入栈
+        res=[]
+        last=None  #  记录上一个访问的节点,用于判断是否从右子树返回
+        T=root.left
+        while S:  # 栈非空
+            while T: # 向左入栈到尽头
+                S.append(T)
+                T=T.left
+            T=S[-1]   # 判断栈顶值
+            if not T.right or last==T.right: # 是叶子节点,则出栈输出并回退上一层; 右子树访问过了(后序) ,也出栈回退.
+                res.append(S.pop().val)
+                last=T    
+                T=None  # 跳过while,检查右子树(已经向左过了)
+            else: # 右子树非空,向右后继续向左
+                T=T.right
+        return res
 ```
 
 ```java
