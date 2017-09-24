@@ -245,6 +245,7 @@ class Solution {
 ```
 
 [99. Recover Binary Search Tree ](https://leetcode.com/problems/recover-binary-search-tree/description/)
+
 Two elements of a binary search tree (BST) are swapped by mistake.
 
 Recover the tree without changing its structure.
@@ -315,6 +316,7 @@ class Solution {
 ```
 
 [297. Serialize and Deserialize Binary Tree ](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/)
+
 Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
 
 Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
@@ -341,6 +343,7 @@ author:
 ```
 
 [669. Trim a Binary Search Tree](https://leetcode.com/problems/trim-a-binary-search-tree/description/)
+
 Given a binary search tree and the lowest and highest boundaries as L and R, trim the tree so that all its elements lies in `[L, R]` (R >= L). You might need to change the root of the tree, so the result should return the new root of the trimmed binary search tree.
 
 **Example 1:**
@@ -429,6 +432,7 @@ class Codec:
 ```
 
 [515. Find Largest Value in Each Tree Row](https://leetcode.com/problems/find-largest-value-in-each-tree-row/description/)
+
 You need to find the largest value in each row of a binary tree.
 
 **Example :**
@@ -472,6 +476,7 @@ class Solution(object):
 ```
 
 [145. Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/description/)
+
 Given a binary tree, return the postorder traversal of its nodes' values.
 
 For example:
@@ -526,6 +531,7 @@ class Solution(object):
 ```
 
 [501. Find Mode in Binary Search Tree](https://leetcode.com/problems/find-mode-in-binary-search-tree/description/)
+
 Given a binary search tree (BST) with duplicates, find all the mode(s) (the most frequently occurred element) in the given BST.
 
 Assume a BST is defined as follows:
@@ -561,7 +567,7 @@ return [2].
 //author:
 ```
 
-[513. Find Bottom Left Tree Value] (https://leetcode.com/problems/find-bottom-left-tree-value/description/)
+[513. Find Bottom Left Tree Value](https://leetcode.com/problems/find-bottom-left-tree-value/description/)
 
 Given a binary tree, find the leftmost value in the last row of the tree.
 
@@ -600,6 +606,7 @@ Note: You may assume the tree (i.e., the given root node) is not NULL.
 
 
 [124. Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/description/)
+
 Given a binary tree, find the maximum path sum.
 
 For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.
@@ -619,6 +626,7 @@ Return 6.
 
 
 [112. Path Sum](https://leetcode.com/problems/path-sum/description/)
+
 Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
 
 For example:
