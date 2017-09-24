@@ -60,3 +60,6 @@
 - [515. Find Largest Value in Each Tree Row](https://leetcode.com/problems/find-largest-value-in-each-tree-row/description/)(Medium)
 - [145. Binary Tree Postorder Traversal](https://leetcode.com/problems/binary-tree-postorder-traversal/description/)(Hard)
 - [501. Find Mode in Binary Search Tree](https://leetcode.com/problems/find-mode-in-binary-search-tree/description/)(Easy)
+- [513. Find Bottom Left Tree Value] (https://leetcode.com/problems/find-bottom-left-tree-value/description/)(Medium)
+- [124. Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/description/)(Hard)
+- [112. Path Sum](https://leetcode.com/problems/path-sum/description/)(Easy)

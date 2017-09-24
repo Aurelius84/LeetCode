@@ -560,3 +560,77 @@ return [2].
 ```java
 //author:
 ```
+
+[513. Find Bottom Left Tree Value] (https://leetcode.com/problems/find-bottom-left-tree-value/description/)
+
+Given a binary tree, find the leftmost value in the last row of the tree.
+
+Example 1:
+```
+Input:
+
+    2
+   / \
+  1   3
+
+Output:
+1
+```
+Example 2: 
+```
+Input:
+
+        1
+       / \
+      2   3
+     /   / \
+    4   5   6
+       /
+      7
+
+Output:
+7
+```
+Note: You may assume the tree (i.e., the given root node) is not NULL.
+
+
+
+
+
+
+
+[124. Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/description/)
+Given a binary tree, find the maximum path sum.
+
+For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.
+
+For example:
+Given the below binary tree,
+```
+
+       1
+      / \
+     2   3
+```
+Return 6.
+
+
+
+
+
+[112. Path Sum](https://leetcode.com/problems/path-sum/description/)
+Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
+
+For example:
+Given the below binary tree and sum = 22,
+```
+              5
+             / \
+            4   8
+           /   / \
+          11  13  4
+         /  \      \
+        7    2      1
+```
+return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
+
