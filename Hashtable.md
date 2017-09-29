@@ -25,7 +25,27 @@ Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal numb
 ```
 
 ```java
-// author:
+// author:Then
+class Solution {
+    public int findMaxLength(int[] nums) {
+        int  []numsMap = new int[2*nums.length+1];
+        int result = 0;
+        int sum = nums.length;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i]==0 ? -1 : 1;
+            if(sum == nums.length ){
+                result = i+1;
+                continue;
+            }
+            if(numsMap[sum]==0){
+                numsMap[sum] = i+1;
+            }else {
+                result = Math.max(result, i-numsMap[sum]+1);
+            }
+        }
+        return result;
+    }
+}
 ```
 
 [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/description/)
@@ -72,7 +92,23 @@ Output: [2,3]
 ```
 
 ```java
-// author:
+// author:Then
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+        int []result = new int[2];
+        result[1] = (1+nums.length)*nums.length/2;
+        int []map = new int[nums.length];
+        for(int tmp:nums){
+            if(map[tmp-1]==1){
+                result[0] = tmp;
+            }else{
+                map[tmp-1]=1;
+                result[1]-=tmp;
+            }
+        }
+        return result;
+    }
+}
 ```
 
 [451. Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/description/)
