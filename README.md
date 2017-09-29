@@ -62,4 +62,12 @@
 - [501. Find Mode in Binary Search Tree](https://leetcode.com/problems/find-mode-in-binary-search-tree/description/)(Easy)
 - [513. Find Bottom Left Tree Value](https://leetcode.com/problems/find-bottom-left-tree-value/description/)(Medium)
 - [124. Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/description/)(Hard)
+- 周六？？
 - [112. Path Sum](https://leetcode.com/problems/path-sum/description/)(Easy)
+
+## Seventh Week (hashtable)
+- 周一？？
+- [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)(Medium)
+- [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/description/)(Hard)
+- [645. Set Mismatch](https://leetcode.com/problems/set-mismatch/description/)(Easy)
+- [451. Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/description/)(Medium)
