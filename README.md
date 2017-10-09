@@ -71,6 +71,6 @@
 - [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/description/)(Hard)
 - [645. Set Mismatch](https://leetcode.com/problems/set-mismatch/description/)(Easy)
 - [451. Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/description/)(Medium)
-- [3 Longet Substring Wihtout Repeating characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)(Medium)
 
-## Eighth Week (hashtable)
+## Eighth Week(hashtale)
+- [599. Minimum Index Sum of Two Lists](https://leetcode.com/problems/minimum-index-sum-of-two-lists/description/)(Easy)

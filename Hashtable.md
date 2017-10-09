@@ -1,4 +1,4 @@
-### Hashtable
+### Tree
 [525. Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)
 
 Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.
@@ -25,44 +25,7 @@ Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal numb
 ```
 
 ```java
-// author:Then
-class Solution {
-    public int findMaxLength(int[] nums) {
-        int  []numsMap = new int[2*nums.length+1];
-        int result = 0;
-        int sum = nums.length;
-        for (int i = 0; i < nums.length; i++) {
-            sum += nums[i]==0 ? -1 : 1;
-            if(sum == nums.length ){
-                result = i+1;
-                continue;
-            }
-            if(numsMap[sum]==0){
-                numsMap[sum] = i+1;
-            }else {
-                result = Math.max(result, i-numsMap[sum]+1);
-            }
-        }
-        return result;
-    }
-}
-//author: KillersDeath
-class Solution {
-    public int findMaxLength(int[] nums) {
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, -1);
-        int count=0, maxlen=0;
-        for(int i=0; i<nums.length;i++){
-            count += nums[i]==1?1:-1;
-            if(map.containsKey(count)){
-                maxlen = Math.max(maxlen, i-map.get(count));
-            }else{
-                map.put(count, i);
-            }
-        }
-        return maxlen;
-    }
-}
+// author:
 ```
 
 [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/description/)
@@ -109,23 +72,7 @@ Output: [2,3]
 ```
 
 ```java
-// author:Then
-class Solution {
-    public int[] findErrorNums(int[] nums) {
-        int []result = new int[2];
-        result[1] = (1+nums.length)*nums.length/2;
-        int []map = new int[nums.length];
-        for(int tmp:nums){
-            if(map[tmp-1]==1){
-                result[0] = tmp;
-            }else{
-                map[tmp-1]=1;
-                result[1]-=tmp;
-            }
-        }
-        return result;
-    }
-}
+// author:
 ```
 
 [451. Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/description/)
@@ -183,17 +130,36 @@ Note that 'A' and 'a' are treated as two different characters.
 // author:
 ```
 
-[3 Longet Substring Wihtout Repeating characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+[599. Minimum Index Sum of Two Lists](https://leetcode.com/problems/minimum-index-sum-of-two-lists/description/)
 
-Given a string, find the length of the **longest substring** without repeating characters.
+Suppose Andy and Doris want to choose a restaurant for dinner, and they both have a list of favorite restaurants represented by strings.
 
-**Examples:**
+You need to help them find out their **common interest** with the **least list index sum**. If there is a choice tie between answers, output all of them with no order requirement. You could assume there always exists an answer.
 
-Given `"abcabcbb"`, the answer is `"abc"`, which the length is 3.
+**Example 1:**
+```
+Input:
+["Shogun", "Tapioca Express", "Burger King", "KFC"]
+["Piatti", "The Grill at Torrey Pines", "Hungry Hunter Steakhouse", "Shogun"]
+Output: ["Shogun"]
+Explanation: The only restaurant they both like is "Shogun".
+```
 
-Given `"bbbbb"`, the answer is `"b"`, with the length of 1.
+**Example 2:**
+```
+Input:
+["Shogun", "Tapioca Express", "Burger King", "KFC"]
+["KFC", "Shogun", "Burger King"]
+Output: ["Shogun"]
+Explanation: The restaurant they both like and have the least index sum is "Shogun" with index sum 1 (0+1).
+```
 
-Given `"pwwkew"`, the answer is `"wke"`, with the length of 3. Note that the answer must be a substring, `"pwke"` is a subsequence and not a substring.
+
+**Note:**
+1. The length of both lists will be in the range of [1, 1000].
+2. The length of strings in both lists will be in the range of [1, 30].
+3. The index is starting from 0 to the list length minus 1.
+4. No duplicates in both lists.
 
 ```python
 # author：
