@@ -171,7 +171,7 @@ class Solution {
     public String[] findRestaurant(String[] list1, String[] list2) {
         Map<String, Integer> map = new HashMap<>();
         List<String> res = new LinkedList<>();
-        
+
         int minSum = Integer.MAX_VALUE;
         for(int i=0;i<list1.length;i++) map.put(list1[i], i);
         for(int i=0;i<list2.length;i++){
@@ -187,4 +187,26 @@ class Solution {
         return res.toArray(new String[res.size()]);
     }
 }
+```
+
+[3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/minimum-index-sum-of-two-lists/description/)
+
+Given a string, find the length of the longest substring without repeating characters.
+
+Examples:
+
+Given `"abcabcbb"`, the answer is `"abc"`, which the length is 3.
+
+Given `"bbbbb"`, the answer is `"b"`, with the length of 1.
+
+Given `"pwwkew"`, the answer is `"wke"`, with the length of 3. Note that the answer must be a substring, `"pwke"` is a subsequence and not a substring.
+
+
+
+```python
+# author：
+```
+
+```java
+// author:
 ```
