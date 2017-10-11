@@ -75,3 +75,4 @@
 ## Eighth Week(hashtale)
 - [599. Minimum Index Sum of Two Lists](https://leetcode.com/problems/minimum-index-sum-of-two-lists/description/)(Easy)
 - [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/minimum-index-sum-of-two-lists/description/)(Medium)
+- [18. 4Sum](https://leetcode.com/problems/4sum/description/)(Medium)
